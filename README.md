@@ -13,7 +13,7 @@ The folder name can be defined as `FileId` in the modules as a comment line `' F
     - Read and write permissions
     - Allow GitHub Actions to create and approve pull requests
 1. Commit a new Excel workbook to the `develop` branch.
-1. A new pull request will be created for the `main` branch.
+1. A new pull request will be created for the `main` branch automatically.
 
 ![Github Actions Permissions](/images/GithubActionsPermissions.png)
 
@@ -59,16 +59,14 @@ The code file [extract.py](.github/workflows/extract.py) has steps below to extr
 1. Walk thorugh all the files in the root directory of the repository.
 1. Remove the old extraction folders.
 1. Read only the files with the defined Excel file extensions.
-1. Split the module content into lines for a better display.
-1. Check the lines for special attributes.
+1. Read the module content.
+1. Check the content lines for special attributes.
     - Ignore Attribute lines except VB_Name if it is needed.
     - If an id is defined then use it as a folder name.
 1. If the folder does not exists, create a new one.
-1. Write the content to the module file.
+1. Write the content to a module file.
 
 An explanation to the Python code that is used in this project can be found in [the sources](#sources).
-
-There are also comment lines to explain in details.
 
 ## Exceptions
 
