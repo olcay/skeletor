@@ -1,0 +1,29 @@
+name: Extract VBA from Excel Workbooks
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  run:
+    name: Extraction
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Install tools
+        run: python -m pip install -U oletools
+        shell: sh
+      
+      - name: Extract
+        run: python ./.github/workflows/extract.py
+        shell: sh
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          branch: macros
+          base: main
+          title: New changes in macros
